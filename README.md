@@ -14,24 +14,24 @@ tns plugin add nativescript-ngx-debounce-tap
 
 ### Import the module in your app module
 
-    ```typescript
-        import { NgDebounceTapModule } from 'nativescript-ngx-debounce-tap';
+```typescript
+import { NgDebounceTapModule } from 'nativescript-ngx-debounce-tap';
 
-        @NgModule({
-            imports: [
-                NgDebounceTapModule,
-                // ...
-            ],
-            // ...
-        })
-        export class MyModule { }
-    ```
+@NgModule({
+    imports: [
+        NgDebounceTapModule,
+        // ...
+    ],
+    // ...
+})
+export class MyModule { }
+```
 
 ### Then use it in your templates like so
 
-    ```xml
-        <Label text="Hello World!" ngDebounceTap [delay]="300" [anim]="true" [scale]="1.06" (debounceTap)="hello()"></Label>
-    ```
+```xml
+<Label text="Hello World!" ngDebounceTap [delay]="300" [anim]="true" [scale]="1.06" (debounceTap)="hello()"></Label>
+```
 
 ## API
     
