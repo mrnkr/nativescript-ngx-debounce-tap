@@ -1,5 +1,15 @@
 # nativescript-ngx-debounce-tap
 
+[![NPM version][npm-image]][npm-url]
+[![Downloads][downloads-image]][npm-url]
+[![Twitter Follow][twitter-image]][twitter-url]
+
+[npm-image]:http://img.shields.io/npm/v/nativescript-ngx-debounce-tap.svg
+[npm-url]:https://npmjs.org/package/nativescript-ngx-debounce-tap
+[downloads-image]:http://img.shields.io/npm/dm/nativescript-ngx-debounce-tap.svg
+[twitter-image]:https://img.shields.io/twitter/follow/xmr_nkr.svg?style=social&label=Follow%20me
+[twitter-url]:https://twitter.com/xmr_nkr
+
 {N} + Angular directive for debouncing taps and adding animated feedback to the interaction.
 
 ## Installation
