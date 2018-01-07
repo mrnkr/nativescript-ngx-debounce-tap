@@ -5,7 +5,7 @@ import 'rxjs/add/operator/throttle';
 export declare class DebounceTapDirective implements OnInit, OnDestroy {
     private el;
     delay: number;
-    anim: boolean;
+    anim: string;
     scale: number;
     debounceTap: EventEmitter<ElementRef>;
     private subscription;

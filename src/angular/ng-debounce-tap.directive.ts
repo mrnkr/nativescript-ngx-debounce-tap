@@ -12,7 +12,7 @@ import 'rxjs/add/operator/throttle';
 })
 export class DebounceTapDirective implements OnInit, OnDestroy {
   @Input() delay: number;
-  @Input() anim: boolean;
+  @Input() anim: string; // possible values are scale, opacity or composite
   @Input() scale: number;
   @Output() debounceTap = new EventEmitter<ElementRef>();
 
@@ -37,11 +37,13 @@ export class DebounceTapDirective implements OnInit, OnDestroy {
 
   private animateInteraction(elem: any, callback: () => void): void {
     elem.animate({
-      scale: { x: this.scale || 1.2, y: this.scale || 1.2 },
+      scale: this.anim === 'composite' || this.anim === 'scale' ? { x: this.scale || 1.2, y: this.scale || 1.2 } : { x: 1, y: 1 },
+      opacity: this.anim === 'composite' || this.anim === 'opacity' ? 0.6 : 1,
       duration: 150
     }).then(() => {
       elem.animate({
-        scale: { x: 1, y: 1 },
+        scale: this.anim === 'composite' || this.anim === 'scale' ? { x: 1, y: 1 } : { x: 1, y: 1 },
+        opacity: 1,
         duration: 150
       }).then(() => {
         callback();

@@ -1,3 +1,9 @@
 <StackLayout orientation="vertical">
-  <Label text="Hello World!" ngDebounceTap [delay]="300" [anim]="true" [scale]="1.06" (debounceTap)="hello()"></Label>
+  <Label text="Hello World!" 
+         horizontalAlignment="center" 
+         ngDebounceTap 
+         [delay]="320"
+         [anim]="'composite'" 
+         [scale]="1.06" 
+         (debounceTap)="hello()"></Label>
 </StackLayout>

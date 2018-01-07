@@ -1,6 +1,6 @@
 {
     "name": "nativescript-ngx-debounce-tap",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "{N} + Angular directive for debouncing taps and adding animated feedback to the interaction.",
     "main": "ngx-debounce-tap",
     "typings": "ngx-debounce-tap.d.ts",
