@@ -1,0 +1,22 @@
+@import './app-common.css';
+
+.action-bar-icon {
+  color: #000000; 
+  font-size: 26; 
+  padding-top: 16; 
+  padding-bottom: 16; 
+  padding-right: 16;
+}
+
+.test-container {
+  border-color: #30bcff; 
+  color: #30bcff; 
+  border-width: 1; 
+  border-radius: 8;
+}
+
+.list-group-item {
+  height: 260;
+  width: 300;
+  border-radius: 2;
+}

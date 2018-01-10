@@ -1,0 +1,32 @@
+@import './app-common.css';
+@import 'nativescript-ngx-iphonex-safe-area/css/iphonex.css';
+
+.top-bar-icon {
+  color: #F47983; 
+  font-size: 36;
+}
+
+.title {
+  font-weight: bold; 
+  font-size: 36; 
+  color: #000000;
+}
+
+.subtitle {
+  font-size: 16;
+}
+
+.test-container {
+  border-color: #F47983; 
+  color: #F47983; 
+  border-width: 1; 
+  border-radius: 8;
+}
+
+.list-group-item {
+  height: 260;
+  width: 300;
+  border-radius: 8;
+
+  background-color: #F2F1EF;
+}

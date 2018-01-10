@@ -1,0 +1,23 @@
+<GridLayout columns="*,*,*" rows="auto">
+  <Label col="0" row="0"
+          class="ion h1 p-10" 
+          [ngStyle]="color ? { 'color': color } : {}"
+          [text]="altIcon ? ('ion-ios-arrow-dropleft-circle' | fonticon) : ('ion-ios-remove-circle' | fonticon)"
+          ngDebounceTap
+          (debounceTap)="onPreviousTap($event)">
+  </Label>
+
+  <Label col="1" row="0" 
+        class="value text-center m-y-auto" 
+        [ngStyle]="color ? { 'color': darkenColor(color) } : {}"
+        [text]="mask ? mask[value] : value" 
+        #display></Label>
+
+  <Label col="2" row="0"
+          class="ion h1 p-10 text-right" 
+          [ngStyle]="color ? { 'color': color } : {}"
+          [text]="altIcon ? ('ion-ios-arrow-dropright-circle' | fonticon) : ('ion-ios-add-circle' | fonticon)"
+          ngDebounceTap
+          (debounceTap)="onNextTap($event)">
+  </Label>
+</GridLayout>

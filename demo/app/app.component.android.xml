@@ -1,0 +1,111 @@
+<GridLayout columns="*" rows="auto, *, auto" class="page">
+  <ActionBar title="Tap everything!">
+    <ActionItem position="actionBar">
+      <Label class="ion action-bar-icon" 
+            ngDebounceTap
+            [anim]="'opacity'"
+            [opacity]="0.2"
+            (debounceTap)="share()"
+            [text]="'ion-md-share' | fonticon"></Label>
+    </ActionItem>
+    <ActionItem position="actionBar">
+      <Label class="ion action-bar-icon" 
+             ngDebounceTap
+             [anim]="'opacity'"
+             [opacity]="0.2"
+             (debounceTap)="showInfo()"
+             [text]="'ion-md-information-circle' | fonticon"></Label>
+    </ActionItem>
+  </ActionBar>
+
+  <StackLayout col="0" row="0" 
+               class="m-x-10 m-y-25 p-10 test-container" 
+               orientation="vertical">
+    <Label text="Hello World!" 
+           horizontalAlignment="center" 
+           ngDebounceTap 
+           [delay]="props.delay"
+           [anim]="props.anim" 
+           [scale]="props.scale" 
+           [opacity]="props.opacity" 
+           (debounceTap)="hello()"></Label>
+  </StackLayout>
+
+
+  <GridLayout col="0" row="1" 
+              columns="*" rows="*" 
+              class="list-group m-25" 
+              [ngSwitch]="page">
+    <FlexboxLayout *ngSwitchCase="'delay'" 
+                   col="0" row="0"
+                   class="list-group-item"  
+                   flexDirection="column" 
+                   justifyContent="space-around" 
+                   alignItems="center" 
+                   (swipe)="onSwipe($event)" 
+                   shadow [elevation]="2" bgcolor="#F2F1EF"
+                   [@fadeInOut]="orientation">
+      <app-number-picker [color]="'#30bcff'" 
+                         [max]="11" 
+                         [min]="0" 
+                         [mask]="[0,100,200,300,400,500,600,700,800,900,1000]" 
+                         (valueChanged)="setValue('delay', $event)"></app-number-picker>
+      <Label class="text-center" text="Delay [delay]"></Label>
+    </FlexboxLayout>
+    
+    <FlexboxLayout *ngSwitchCase="'anim'" 
+                   col="0" row="0"
+                   class="list-group-item" 
+                   flexDirection="column" 
+                   justifyContent="space-around" 
+                   alignItems="center" 
+                   (swipe)="onSwipe($event)" 
+                   shadow [elevation]="2" bgcolor="#F2F1EF"
+                   [@fadeInOut]="orientation">
+      <app-number-picker [color]="'#30bcff'" 
+                         [max]="3" 
+                         [min]="0" 
+                         [mask]="['opacity','scale','composite']" 
+                         [altIcon]="true"
+                         (valueChanged)="setValue('anim', $event)"></app-number-picker>
+      <Label class="text-center" text="Animation type [anim]"></Label>
+    </FlexboxLayout>
+
+    <FlexboxLayout *ngSwitchCase="'scale'" 
+                   col="0" row="0"
+                   class="list-group-item" 
+                   flexDirection="column" 
+                   justifyContent="space-around" 
+                   alignItems="center" 
+                   (swipe)="onSwipe($event)" 
+                   shadow [elevation]="2" bgcolor="#F2F1EF"
+                   [@fadeInOut]="orientation">
+      <app-number-picker [color]="'#30bcff'" 
+                         [max]="11" 
+                         [min]="0" 
+                         [mask]="[0,0.2,0.4,0.6,0.8,1,1.2,1.4,1.6,1.8,2]" 
+                         (valueChanged)="setValue('scale', $event)"></app-number-picker>
+      <Label class="text-center" text="Scale [scale]"></Label>
+    </FlexboxLayout>
+
+    <FlexboxLayout *ngSwitchCase="'opacity'" 
+                   col="0" row="0"
+                   class="list-group-item" 
+                   flexDirection="column" 
+                   justifyContent="space-around" 
+                   alignItems="center" 
+                   (swipe)="onSwipe($event)" 
+                   shadow [elevation]="2" bgcolor="#F2F1EF"
+                   [@fadeInOut]="orientation">
+      <app-number-picker [color]="'#30bcff'" 
+                         [max]="11" 
+                         [min]="0" 
+                         [mask]="[0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]" 
+                         (valueChanged)="setValue('opacity', $event)"></app-number-picker>
+      <Label class="text-center" text="Opacity [opacity]"></Label>
+    </FlexboxLayout>
+  </GridLayout>
+
+  <Label col="0" row="2" class="footnote text-center text-muted m-t-10 m-x-15 m-b-15" textWrap="true" 
+         text="Check your console to see processed taps."></Label>
+</GridLayout>

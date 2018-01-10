@@ -43,8 +43,13 @@ export class MyModule { }
         [delay]="320"
         [anim]="'composite'" 
         [scale]="1.06" 
+        [opacity]="0.2" 
         (debounceTap)="hello()"></Label>
 ```
+
+### Do check out the demo for a quickstart
+
+![Screenshot portrait](demo/app/assets/screenshot.png)
 
 ## API
     
@@ -53,7 +58,14 @@ export class MyModule { }
 | delay | number | 300 | The time between each processed tap in milliseconds. |
 | anim | string | n/a | The way the interaction is to be animated. Possible values: 'composite', 'opacity', 'scale'. Scale => The element is magnified and returned to its original state. Opacity => The element has its opacity dropped to 0.6 and then returns to normal, like TouchableOpacity in React Native (not the values, the behavior). Composite => Performs both animations symultaneously. |
 | scale | number | 1.2 | The scale to use when magnifying the element. Set this in order to keep the animation as seamless as possible. |
+| opacity | number | 0.6 | The opacity used to animate the interaction. Set it to your liking, the default value can be hard to see on some scenarios so keep that in mind! |
 | debounceTap | EventEmitter<ElementRef> | n/a | The event that is emitted when a tap is processed. The $event variable will have a reference to the element that was tapped (as an ElementRef). In case the scale animation is not your thing you can set [anim] to false and make one that suits you in this callback yourself. |
+
+## Changelog
+
+1.2.0 - Added the opacity @Input property to the directive for further customization.
+1.1.0 - Added opacity animation as an option.
+1.0.0 - Initial implementation
 
 ## License
 

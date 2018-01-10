@@ -7,10 +7,11 @@ export declare class DebounceTapDirective implements OnInit, OnDestroy {
     delay: number;
     anim: string;
     scale: number;
+    opacity: number;
     debounceTap: EventEmitter<ElementRef>;
     private subscription;
     constructor(el: ElementRef);
     ngOnInit(): void;
-    private animateInteraction(elem, callback);
+    private animateInteraction(elem);
     ngOnDestroy(): void;
 }

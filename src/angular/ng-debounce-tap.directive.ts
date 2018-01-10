@@ -14,6 +14,7 @@ export class DebounceTapDirective implements OnInit, OnDestroy {
   @Input() delay: number;
   @Input() anim: string; // possible values are scale, opacity or composite
   @Input() scale: number;
+  @Input() opacity: number;
   @Output() debounceTap = new EventEmitter<ElementRef>();
 
   private subscription: Subscription;
@@ -26,29 +27,30 @@ export class DebounceTapDirective implements OnInit, OnDestroy {
 
     this.subscription = throttledTap$.subscribe(args => {
       if (this.anim) {
-        this.animateInteraction(this.el.nativeElement, () => {
-          this.debounceTap.emit(this.el);
-        });
+        this.animateInteraction(this.el.nativeElement)
+            .then(() => this.debounceTap.emit(this.el));
       } else {
         this.debounceTap.emit(this.el);
       }
     });
   }
 
-  private animateInteraction(elem: any, callback: () => void): void {
-    elem.animate({
+  /**
+   * All animations consist of a quick transformation and then returning the element to its previous state
+   * @param elem The component that triggered the event
+   * @return A promise which will have its then function trigger after the animation
+   */
+  private animateInteraction(elem: any): Promise<void> {
+    // Transform the element as the directive is told to
+    return elem.animate({
       scale: this.anim === 'composite' || this.anim === 'scale' ? { x: this.scale || 1.2, y: this.scale || 1.2 } : { x: 1, y: 1 },
-      opacity: this.anim === 'composite' || this.anim === 'opacity' ? 0.6 : 1,
+      opacity: this.anim === 'composite' || this.anim === 'opacity' ? ( this.opacity || 0.6 ) : 1,
       duration: 150
-    }).then(() => {
-      elem.animate({
-        scale: this.anim === 'composite' || this.anim === 'scale' ? { x: 1, y: 1 } : { x: 1, y: 1 },
+    }).then(() => elem.animate({
+        scale: { x: 1, y: 1 },
         opacity: 1,
         duration: 150
-      }).then(() => {
-        callback();
-      });
-    });
+      }));
   }
 
   ngOnDestroy() {
